@@ -10,7 +10,7 @@ package game;
  * @author kornelia
  */
 public class Game {
-    public static final int SIZE = 30;
+    public static final int SIZE = 10;
     private final Player[][] board = new Player[SIZE][SIZE];
   
     public Player[][] getBoard() {
@@ -47,4 +47,6 @@ public class Game {
     public Player getWinner() {
         return null;
     }
+
+
 }
