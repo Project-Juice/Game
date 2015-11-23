@@ -10,6 +10,10 @@ package game;
  * @author kornelia
  */
 public enum Player {
+
+    /**
+     * Znaczniki Ludzi
+     */
     PLAYER1("X"),
     PLAYER2("O");
     

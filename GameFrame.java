@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,7 @@ import javax.swing.JButton;
 
 
 /**
- *
+ * Klasa odpowiedzialna za okno, gdzie rozgrywa się gra.
  * @author kornelia
  */
 public class GameFrame extends javax.swing.JFrame {
@@ -40,18 +41,24 @@ public class GameFrame extends javax.swing.JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         click(x,y);
+                       
                     }
                 }  ); 
             }
         }
         refresh();
     }
+    /**
+    *   Obsługuje kliknięcie. Ustala przy tym, jaki gracz będzie następny,
+    *   które pole zostało kliknięte i wstawia tam symbol gracza.
+    */
     private void click(int x, int y) {
         game.set(game.nextPlayer(),x,y);
-       // if(!pvp){ Sprawdza, czy to nie playerVs,Player. Niezaimplementowane
+        if(!StartGameFrame.player){ 
             Point point = algorithm.turn(game,game.nextPlayer()); 
             game.set(game.nextPlayer(), point);
-       // }
+            
+        }   
         refresh();
     }
     private void refresh(){
@@ -62,6 +69,7 @@ public class GameFrame extends javax.swing.JFrame {
                     JButton button = buttons[i][j];
                     button.setText(player.getMark());
                     button.setEnabled(false);
+                    
                 }
                 
             }
@@ -82,15 +90,21 @@ public class GameFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        gamePanel.setBackground(new java.awt.Color(191, 191, 191));
+        gamePanel.setToolTipText("");
+        gamePanel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        gamePanel.setMinimumSize(new java.awt.Dimension(500, 500));
+        gamePanel.setPreferredSize(new java.awt.Dimension(600, 600));
+
         javax.swing.GroupLayout gamePanelLayout = new javax.swing.GroupLayout(gamePanel);
         gamePanel.setLayout(gamePanelLayout);
         gamePanelLayout.setHorizontalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         gamePanelLayout.setVerticalGroup(
             gamePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -28,7 +28,7 @@ public class Point {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 9;
         hash = 29 * hash + this.x;
         hash = 29 * hash + this.y;
         return hash;
